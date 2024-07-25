@@ -21,10 +21,12 @@ const HistoryItem = ({ count }) => {
 const CounterHistory = ({ history }) => {
   log('<CounterHistory /> rendered', 2);
 
+
+  // key가 변경되면 해당 컴포넌트를 리셋시키고 리렌더링
   return (
     <ol>
       {history.map((count, index) => (
-        <HistoryItem key={index} count={count} />
+        <HistoryItem key={count.id} count={count.value} />
       ))}
     </ol>
   );
