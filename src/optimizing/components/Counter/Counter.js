@@ -35,13 +35,15 @@ const Counter = ({ initialCount }) => {
 
   // const [counter, setCounter] = useState(initialCount);
 
-  //useState의 초기값은 컴포넌트 첫 실행시에만 = (컴포넌트가 마운팅될 떄)
-  //설정되고, 그 이후 작동하지 않음
+  // useState의 초기값은 컴포넌트 첫실행시에만 (컴포넌트가 마운팅될 때)
+  // 설정되고 그 이후엔 작동하지 않음.
   const [counterChanges, setCounterChanges] = useState([{ id: Math.random() * 10000, value: initialCount }]);
 
-  // useEffect(()=>{
+
+  // useEffect(() => {
   //   setCounterChanges([{ id: Math.random() * 10000, value: initialCount }]);
   // }, [initialCount]);
+
 
   // counterChanges의 총합
   const currentCount = counterChanges.reduce((prevCounter, currCount) => prevCounter + currCount.value, 0)
