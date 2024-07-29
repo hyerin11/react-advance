@@ -10,7 +10,12 @@ const CartItem = ({item}) => {
   const { title, quantity, total, price, id } = item;
 
   const addCartHandler = e => {
+    // fetch();
     dispatch(cartActions.addCartItem(item));
+  };
+
+  const removeCarthandler = e => {
+    dispatch(cartActions.removeCartItem(id));
   };
 
   return (
@@ -27,7 +32,7 @@ const CartItem = ({item}) => {
           x <span>{quantity}</span>
         </div>
         <div className={styles.actions}>
-          <button>-</button>
+          <button onClick={removeCarthandler}>-</button>
           <button onClick={addCartHandler}>+</button>
         </div>
       </div>

@@ -21,6 +21,23 @@ const cartSlice = createSlice({
         existingItem.quantity++;
         existingItem.total += newCartItem.price;
       }
+      state.totalQuantity++;
+    },
+    removeCartItem(state, action) {
+      const id = action.payload;
+      const existingItem = state.cartItems.find(item => item.id === id);
+
+      if (existingItem.quantity === 1) { // 수량이 1인 경우 배열에서 삭제
+        // const index = state.cartItems.findIndex(item => item.id === id);
+        // state.cartItems.splice(index, 1);
+
+        state.cartItems = state.cartItems.filter(item => item.id !== id);
+
+      } else { // 수량, 총액 갱신
+        existingItem.quantity--;
+        existingItem.total -= existingItem.price;
+      }
+      state.totalQuantity--;
     }
   }
 });
